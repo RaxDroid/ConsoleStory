@@ -13,8 +13,8 @@ namespace Proyecto_Programacion_I
     class Program
     {
         #region Variables Publicas
-        public static int vRespuesta, vMoralidad;
-        public static bool vBebe;
+        public static int vRespuesta, vMoralidad = 0;
+        public static bool vNina;
         public static string vNombre, vColorConsola;
         #endregion
 
@@ -33,6 +33,7 @@ namespace Proyecto_Programacion_I
                     Galeria();
                     break;
                 case 3:
+                    GameOver();
                     Environment.Exit(0);
                     break;
             }
@@ -41,13 +42,15 @@ namespace Proyecto_Programacion_I
             void Menu()
             {
                 Console.WriteLine("1. Comenzar el Juego");
-                Console.WriteLine("2. Salir del Juego");
+                Console.WriteLine("2. Galeria");
+                Console.WriteLine("3. Salir del Juego");
                 vRespuesta = Convert.ToInt32(Console.ReadLine());
             }
 
             //Metodo principal para el juego (Aqui va la historia y las elecciones)
             void Juego()
             {
+                Console.Clear();
                 Console.Write("Favor introducir el nombre del personaje: ");
                 vNombre = Console.ReadLine();
                 Thread.Sleep(500);
@@ -59,7 +62,7 @@ namespace Proyecto_Programacion_I
                 Console.WriteLine("naturales como tsunamis y terremotos. La señal de la televisión se empieza a cortar mientras están");
                 Console.WriteLine("recomendando a aquellas personas que viven en edificios, evacuar la ciudad lo antes posible.");
                 Console.WriteLine();
-                Thread.Sleep(1500);
+                Thread.Sleep(2000);
                 Console.WriteLine("De repente, se escucha una explosión, la cual rompe todas las ventanas de los edificios que te lo");
                 Console.WriteLine("rodean, y al mismo tiempo, empieza a temblar la tierra y se va la luz. Empieza a temblar el edificio");
                 Console.WriteLine("y de lo último que te enteras es que tu cuerpo se empieza a sentir ligero. Te levantas poco después");
@@ -67,24 +70,74 @@ namespace Proyecto_Programacion_I
                 Console.WriteLine("Lo sacas de tu bolsillo y ves la pantalla que dice que la batería está baja. Es ahí cuando te das cuenta");
                 Console.WriteLine("que no perdiste la vista, sino que todo lo que te rodea está en plena oscuridad.");
                 Console.ReadKey();
-                void a1()
-                {
 
+                A1();
+            }
+
+            #region Arco de Edificio
+            void A1()
+            {
+                Console.WriteLine("Te encuentras en tu habitación e intentas llamar a tu familia, sin embargo no hay señal. ");
+                Console.WriteLine("Lo unico que te llega al celular es una dirección de un refugio. Allí estan recibiendo ");
+                Console.WriteLine("sobrevivientes. Al ver esto, te pones en marcha para salir del edificio. \n");
+                Console.WriteLine("Se siente un temblor y tienes miedo de que tu piso no sea lo suficientemente estable.");
+                Console.WriteLine("Llegas a las escaleras y no sabes si subir o bajar.\n");
+                Thread.Sleep(1500);
+                Console.WriteLine("1. Subir al ultimo piso\n");
+                Console.WriteLine("2. Bajar al decimo piso");
+
+                vRespuesta = Convert.ToInt32(Console.ReadLine());
+                switch (vRespuesta)
+                {
+                    case 1:
+                        A2();
+                        break;
+                    case 2:
+                        //A7();
+                        break;
+                    default:
+                        GameOver();
+                        break;
                 }
             }
+            void A2()
+            {
+                Console.WriteLine("Pasando el pasillo del decimo piso, te diriges a las escaleras para encontrar la escalera ");
+                Console.WriteLine("principal bloqueada por escombros, sin embargo hay un hueco por el cual puedes saltar.");
+                Console.WriteLine("También, el ascensor se ve en buen estado pero dudas al ver el estado del resto del pasillo.\n");
+                Thread.Sleep(1500);
+                Console.WriteLine("1. Usar el elevador\n");
+                Console.WriteLine("2. Saltar por el hueco");
+
+                vRespuesta = Convert.ToInt32(Console.ReadLine());
+                switch (vRespuesta)
+                {
+                    case 1:
+                        Muertes(1);
+                        break;
+                    case 2:
+                        //A4();
+                        break;
+                    default:
+                        GameOver();
+                        break;
+                }
+            }
+            #endregion
 
             //Aqui el juego anota cuales finales se han obtenido y cuales faltan
             void Galeria()
             {
 
             }
-
             //Aqui van las muertes y las pueden invocar con Muertes(Numero de muerte a invocar), todas estas terminaran con el juego saltando a la pantalla de Juego Over
             void Muertes(int i)
             {
                 switch (i)
                 {
                     case 1:
+                        Console.WriteLine("te caite por el ascensor. rayos intentalo de nuevo");
+                        Thread.Sleep(3500);
                         GameOver();
                         break;
 
@@ -144,11 +197,11 @@ namespace Proyecto_Programacion_I
                     Thread.Sleep(500);
                 }
                 TituloTexto();
-                CambiarRojo();
+                CambiarAzul();
                 TituloTexto();
                 CambiarNormal();
                 TituloTexto();
-                CambiarRojo();
+                CambiarAzul();
                 TituloTexto();
                 CambiarNormal();
                 TituloTexto();
@@ -192,3 +245,5 @@ namespace Proyecto_Programacion_I
         }
     }
 }
+
+
