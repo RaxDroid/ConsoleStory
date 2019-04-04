@@ -20,11 +20,14 @@ namespace Proyecto_Programacion_I
 
         static void Main(string[] args)
         {
+            // Comando de inicio
             Titulo();
             Console.Clear();
             Menu();
             
-            //Metodo para el Menu Principal
+            #region Paquete del juego
+            // Metodo para el Menu Principal
+            #region Menu
             void Menu()
             {
                 Console.WriteLine("City Escape v1.0");
@@ -38,13 +41,15 @@ namespace Proyecto_Programacion_I
                         Juego();
                         break;
                     case 2:
-                        GameOver();
+                        Titulo();
                         Environment.Exit(0);
                         break;
                 }
             }
+            #endregion
 
-            //Metodo principal para el juego (Aqui va la historia y las elecciones)
+            // Metodo principal para el comienzo del juego(A1)
+            #region Inicio del Juego
             void Juego()
             {
                 Console.Clear();
@@ -71,7 +76,9 @@ namespace Proyecto_Programacion_I
                 D1();
                 A2();
             }
+            #endregion
 
+            // Metodos para las decisiones del juego
             #region Decisiones
             void A2()
             {
@@ -132,7 +139,7 @@ namespace Proyecto_Programacion_I
             void A4()
             {
                 Console.WriteLine("Luego de saltar por el hueco, se oye el sonido del ascensor cayendo e impactando con el ");
-                Console.WriteLine("suelo, lo cual causa que tiemblen los escombros del edificio. Ahora te encuentras en la tercera ");
+                Console.WriteLine("suelo, lo cual causa que tiemblen los escombros del edificio. Ahora te encuentras en la");
                 Console.WriteLine("novena del edificio, donde escuchas un sonido de una niña llorando y tosiendo.\n");
                 Thread.Sleep(1500);
                 Console.WriteLine("1. Ir a buscar a la niña");
@@ -145,6 +152,7 @@ namespace Proyecto_Programacion_I
                         Console.Clear();
                         D3();
                         vNina = true;
+                        Thread.Sleep(1500);
                         A5();
                         break;
                     case 2:
@@ -164,8 +172,8 @@ namespace Proyecto_Programacion_I
                 {
                     Console.WriteLine("La niña esta en shock y no puede sacar palabras de su boca, pero acepta seguirte.");
                 }
-                Console.WriteLine(" Continúas bajando hasta que llegas al septimo piso, pero la escalera ahora está completamente ");
-                Console.WriteLine(" bloqueada y tu único camino es subir de nuevo.\n");
+                Console.WriteLine("Continúas bajando hasta que llegas al septimo piso, pero la escalera ahora está completamente ");
+                Console.WriteLine("bloqueada y tu único camino es subir de nuevo.\n");
                 Thread.Sleep(1500);
                 Console.WriteLine("1. Volver hacia arriba");
                 Console.WriteLine("2. Intentar mover escombros");
@@ -255,7 +263,8 @@ namespace Proyecto_Programacion_I
                                 break;
                             case 2:
                                 Console.Clear();
-                                vMoralidad -= 1/2;
+                                vMoralidad++;
+                                Console.WriteLine("La niña con ojos llorosos observa como te comes la manzana, no obstante te continua siguiendo.");
                                 A8();
                                 break;
                             default:
@@ -333,7 +342,7 @@ namespace Proyecto_Programacion_I
                 Console.WriteLine("De repente, se escucha una explosión, la cual rompe todas las ventanas de los edificios que te lo");
                 Console.WriteLine("Luego de 10 minutos de cargar tu celular, la batería está en 70%.\n");
                 Thread.Sleep(1500);
-                Console.WriteLine("1. Cargar el celular");
+                Console.WriteLine("1. Seguir cargando el celular");
                 Console.WriteLine("2. Seguir bajando el edificio");
                 vRespuesta = Convert.ToInt32(Console.ReadLine());
                 switch (vRespuesta)
@@ -396,7 +405,8 @@ namespace Proyecto_Programacion_I
                             break;
                         case 2:
                             Console.Clear();
-                            vMoralidad -= 1 / 2;
+                            vMoralidad++;
+                            Console.WriteLine("La niña, frustrada, te continuo exigiendo, pero no le hiciste caso. Sin embargo, siguio persiguiendote sin ir al baño.");
                             A13();
                             break;
                         default:
@@ -412,9 +422,9 @@ namespace Proyecto_Programacion_I
                 D4();
                 Console.WriteLine("Tu y la niña corren hasta alejarse lo suficiente del edificio que se esta cayendo. Después de varios ");
                 Console.WriteLine("minuto corriendo, se paran a descansar. Cuando se sientan a descansar, la niña te dice su nombre. ");
-                Console.WriteLine("'Joelia', dice la niña. Te presentas y le dices que te llamas {0}. Luego de presentarse, la niña ");
+                Console.WriteLine("'Joelia', dice la niña. Te presentas y le dices que te llamas {0}. Luego de presentarse, la niña ", vNombre);
                 Console.WriteLine("te dice que sus padres están trabajando hasta tarde y que no sabe donde estan y quisiera llamarlos ");
-                Console.WriteLine("para hablar con ellos.\n", vNombre);
+                Console.WriteLine("para hablar con ellos.\n");
                 Thread.Sleep(1500);
                 Console.WriteLine("1. Le prestas el celular para que llame a sus padres");
                 Console.WriteLine("2. Decir que no, ya que no hay señal y deben ir al refugio lo antes posible");
@@ -476,7 +486,7 @@ namespace Proyecto_Programacion_I
                 {
                     case 1:
                         Console.Clear();
-                        if (vMoralidad == -1)
+                        if (vMoralidad == 2)
                             Final(2);
                         else Final(1);
                         break;
@@ -588,6 +598,7 @@ namespace Proyecto_Programacion_I
             }
             #endregion
 
+            // Metodos para los enunciados sin decisiones
             #region Enunciados
             void D1()
             {
@@ -617,11 +628,12 @@ namespace Proyecto_Programacion_I
                 Console.WriteLine("Los carros están en llamas, las calles están destruidas, los cables de los postes están en el suelo ");
                 Console.WriteLine("y escombros por todos lados.");
                 Console.WriteLine("De repente, empieza a temblar la tierra y ves que tu edificio se empieza a mover como que se va a caer.\n");
+                Thread.Sleep(1500);
 
-                Console.Clear();
             }
             #endregion
 
+            // Metodos para el final secreto
             #region EasterEgg
             void EE1()
             {
@@ -703,8 +715,8 @@ namespace Proyecto_Programacion_I
                 Console.ReadKey();
             }
             #endregion
-            
-            //Aqui van las muertes y las pueden invocar con Muertes(Numero de muerte a invocar), todas estas terminaran con el juego saltando a la pantalla de Juego Over
+
+            // Metodos con las muertes
             #region Muertes
             void Muertes(int i)
             {
@@ -714,13 +726,19 @@ namespace Proyecto_Programacion_I
                         Console.WriteLine("Cuando decides entrar al ascensor, de repente el cordón del ascensor se rompe, causando que caigas 10 ");
                         Console.WriteLine("pisos en caída libre y te rompes la cabeza al impactar con el suelo. Moral de la historia, no uses ascensores ");
                         Console.WriteLine("cuando haya una emergencia.\n");
-                        GameOver();
+                        
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     case 2:
                         Console.WriteLine("Cuando te acercas a la ventana solo oyes un sonido ensordecedor el cual se hace mas alto cada segundo. De repente,");
-                        Console.WriteLine("De repente, observamos un meteorito dirigiéndose directamente a tu cara. Reaccionaste tarde y el meteorito atravesó ");
-                        Console.WriteLine("tu cabeza y te dejó un hoyo, matándote al instante.\n");
-                        GameOver();
+                        Console.WriteLine("observamos un meteorito dirigiéndose directamente a tu cara. Reaccionaste tarde y el meteorito atravesó tu cabeza");
+                        Console.WriteLine("y te dejó un hoyo, matándote al instante.\n");
+
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     case 3:
                         Console.WriteLine("La niña se molesta y empieza a llorar a gritos. Los militares cercanos escuchan y se ponen");
@@ -729,19 +747,28 @@ namespace Proyecto_Programacion_I
                         Console.WriteLine("por el pulmon. Te caes al piso y tres balazos pas te terminan de matar. La niña es retirada de la");
                         Console.WriteLine("vista y se envia una alarma para buscar sus padres. Tu cuerpo se quedo abandonado en el");
                         Console.WriteLine("medio del desierto.");
-                        GameOver();
+
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     case 4:
                         Console.WriteLine("Los militares descubren que dejaste a la niña botada en el edificio colapsando. Cuando te ");
                         Console.WriteLine("preguntan y no sabes que responder, los militares se molestan. La madre en llantos sale del ");
                         Console.WriteLine("carro, te da con su tacon y te tumban al piso. Ella se voltea y les ordena a terminarte. Miles de ");
                         Console.WriteLine("balas atraviesan tu cuerpo.");
-                        GameOver();
+
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     case 5:
                         Console.WriteLine("Por tus intentos inefectivos de tratar de mover los escombros para salir, te has tomado mucho tiempo dentro");
                         Console.WriteLine("de un edificio inestable. Desafortunadamente, el edificio ha colapsado y has muerto aplastado por el edificio.");
-                        GameOver();
+
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     default:
                         break;
@@ -749,6 +776,7 @@ namespace Proyecto_Programacion_I
             }
             #endregion
 
+            // Metodos con los finales
             #region Finales
             void Final(int i)
             {
@@ -763,7 +791,10 @@ namespace Proyecto_Programacion_I
                         Console.WriteLine("de la familia. Te explican que tienen un cohete y que la NASA lo preparó para poder llevarlos a la colonia ");
                         Console.WriteLine("secreta de Marte. Feliz te preparas para la nueva vida en la colonia de Marte.\n");
                         
-                        Console.WriteLine("GOOD ENDING");
+                        Console.WriteLine("GOOD ENDING\n");
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(2);
                         break;
                     case 2:
                         Console.WriteLine("\nSigues la dirección indicada por la madre de Joelia, y recorren un vasto recorrido a través de la ciudad ");
@@ -778,20 +809,26 @@ namespace Proyecto_Programacion_I
                         Console.WriteLine("la familia de Joelia para ser el esclavo privado de ellos. Lo unico que puedes hacer es mirar");
                         Console.WriteLine("al techo gris de la cueva y contemplar que tan horrible sera tu vida en Marte.\n");
 
-                        Console.WriteLine("BAD ENDING");
+                        Console.WriteLine("BAD ENDING\n");
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                     case 3:
-                        Console.WriteLine("Al llegar al refugio, conoces a una chica llamada Isabella,  la ves y te parece muy atractiva, te acercas");
+                        Console.WriteLine("\nAl llegar al refugio, conoces a una chica llamada Isabella,  la ves y te parece muy atractiva, te acercas");
                         Console.WriteLine(" a ella y te pregunta cómo llegaste al refugio, le explicas todos los eventos por los que tuviste que pasar");
                         Console.WriteLine(" y quedó impresionada, ambos siguen platicando y despierta un interés el uno por el otro, pasan dos semanas ");
                         Console.WriteLine("y su amor llegó tan lejos que se terminan casando, todas las personas del refugio realizan una ceremonia para ");
                         Console.WriteLine("el casamiento, ambos son declarados como marido y mujer y deciden vivir juntos hasta la muerte, pasan 3 semanas ");
                         Console.WriteLine("y el mundo colapsa con la luna (todos mueren).\n");
 
-                        Console.WriteLine("GOOD ENDING");
+                        Console.WriteLine("GOOD ENDING\n");
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(2);
                         break;
                     case 4:
-                        Console.WriteLine("Te acercas al grupo de refugiados y todos han recibido el mismo aviso sobre la dirección. La ");
+                        Console.WriteLine("\nTe acercas al grupo de refugiados y todos han recibido el mismo aviso sobre la dirección. La ");
                         Console.WriteLine("niña se veía frustrada por no poderse comunicar con sus padres pero rápidamente se ");
                         Console.WriteLine("tranquilizó al ver que la estaban dejando atrás. En caravana, tú y los refugiados se dirigieron ");
                         Console.WriteLine("hacia el refugio. Cuando llegas al refugio, te sientes aliviado porque ya tú y la niña están fuera ");
@@ -805,7 +842,10 @@ namespace Proyecto_Programacion_I
                         Console.WriteLine("militares que fueron abandonados decidieron montar una dictadura militar y forzar a la gente a ");
                         Console.WriteLine("trabajar para poder sobrevivir.\n");
 
-                        Console.WriteLine("BAD ENDING");
+                        Console.WriteLine("BAD ENDING\n");
+                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        GameOver(1);
                         break;
                 }
             }
@@ -814,7 +854,11 @@ namespace Proyecto_Programacion_I
             // Metodos para cambios de colores, animacion de titulo y de gameover
             #region Metodos de Animacion
             //Los proximos metodos se puedon usar para cambiar el color del fondo(La letra seguira en el color que estaba antes, para metodos de letra usar ForeGroundColor)
-            
+            void CambiarVerde()
+            {
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.Clear();
+            }
             void CambiarAzul()
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
@@ -869,8 +913,9 @@ namespace Proyecto_Programacion_I
 
             //Animacion de juego terminado
             #region GameOver
-            void GameOver()
+            void GameOver(int i)
             {
+                Console.Clear();
                 void GameOverTexto()
                 {
                     Console.WriteLine();
@@ -888,32 +933,54 @@ namespace Proyecto_Programacion_I
                     Console.WriteLine("           \\/_____/   \\/_/\\/_/   \\/_/  \\/_/   \\/_____/      \\/_____/   \\/_/      \\/_____/   \\/_/ /_/ ");
                     Thread.Sleep(500);
                 }
-                Thread.Sleep(3500);
-                Console.Clear();
-                GameOverTexto();
-                CambiarRojo();
-                GameOverTexto();
-                CambiarNormal();
-                GameOverTexto();
-                CambiarRojo();
-                GameOverTexto();
-                CambiarNormal();
-                GameOverTexto();
-                CambiarRojo();
-                GameOverTexto();
-                CambiarNormal();
-                GameOverTexto();
+                switch (i)
+                {
+                    case 1:
+                        Thread.Sleep(1500);
+                        Console.Clear();
+                        GameOverTexto();
+                        CambiarRojo();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        CambiarRojo();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        CambiarRojo();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        break;
+                    case 2:
+                        Thread.Sleep(1500);
+                        Console.Clear();
+                        GameOverTexto();
+                        CambiarVerde();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        CambiarVerde();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        CambiarVerde();
+                        GameOverTexto();
+                        CambiarNormal();
+                        GameOverTexto();
+                        break;
+                }
                 Thread.Sleep(5500);
                 Console.Clear();
                 Console.WriteLine("¿Deseas empezar de nuevo? \n");
                 Console.WriteLine("1. Si");
                 Console.WriteLine("2. No");
-
-                Console.ReadLine();
+                
                 vRespuesta = Convert.ToInt32(Console.ReadLine());
                 switch (vRespuesta)
                 {
                     case 1:
+                        Console.Clear();
                         Menu();
                         break;
                     case 2:
@@ -926,6 +993,7 @@ namespace Proyecto_Programacion_I
             }
             #endregion
 
+            #endregion
             #endregion
         }
     }
